@@ -1,10 +1,10 @@
 cask 'karabiner' do
-  version '10.15.0'
-  sha256 '91f3f8709103213fbcaedc352feb135fa0a5c55cda9643135b532bc453acf89e'
+  version '10.20.0'
+  sha256 '5dfbd535a6b7b1fbbecc98b8377af909f8f3a27f9752c1d960a3aa2e5fdd90dd'
 
   url "https://pqrs.org/osx/karabiner/files/Karabiner-#{version}.dmg"
   appcast 'https://pqrs.org/osx/karabiner/files/appcast.xml',
-          checkpoint: 'e0a355ef67c83a15a8775ddf5b8c5c9fefeca4f6fd5197af550a77ace671e33b'
+          checkpoint: 'fa74e97ee107ab13354b126bc63a6e65c1a72f49c541d2b63d77cee939d0236f'
   name 'Karabiner'
   homepage 'https://pqrs.org/osx/karabiner/'
   license :public_domain

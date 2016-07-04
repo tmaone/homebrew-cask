@@ -1,6 +1,6 @@
 cask 'arduino' do
-  version '1.6.7'
-  sha256 '9ad1a3096904c132e7a0817c9d7afc17a891ded3fb73a50ac1d5845d6a7d68a3'
+  version '1.6.9'
+  sha256 'decf316e2bf27f8d839b386845852e94a8cbbfeffbe1e8a8afea96f651ac55fc'
 
   url "https://downloads.arduino.cc/arduino-#{version}-macosx.zip"
   name 'Arduino'
@@ -8,7 +8,7 @@ cask 'arduino' do
   license :gpl
 
   app 'Arduino.app'
-  binary 'Arduino.app/Contents/Java/arduino-builder'
+  binary "#{appdir}/Arduino.app/Contents/Java/arduino-builder"
 
   caveats do
     depends_on_java

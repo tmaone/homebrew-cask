@@ -1,11 +1,11 @@
 cask 'world-of-tanks' do
-  version '1.0.25'
-  sha256 '2efd7dca4b678ad37fda74888ac77a6bf116a4f5979de33a7689a038af69fecc'
+  version '1.0.30'
+  sha256 '22d96a5eea6cd60fb2e879d8af6bcf9b28958c0ddccb198e8a3388f191273211'
 
   # wargaming.net was verified as official when first introduced to the cask
   url 'http://redirect.wargaming.net/WoT/latest_mac_install_na'
   appcast 'https://wot.gcdn.co/us/files/osx/WoT_OSX_update_na.xml',
-          checkpoint: '3ebe447ffe152d69a6e035b4075af292ff245cee5adfa8e54062df5138c33a42'
+          checkpoint: '84e19ba0bf8fa534ad34ce6b844bc5682f809a935cd4f08bae376997d81f2a1f'
   name 'World Of Tanks'
   homepage 'http://worldoftanks.com/'
   license :gratis

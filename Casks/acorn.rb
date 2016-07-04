@@ -1,10 +1,10 @@
 cask 'acorn' do
-  version '5.3'
-  sha256 'c602778bbc0b44f164dbaf9c6c7ee48d3be9305d1522efdb4b561290e8649652'
+  version '5.4.1'
+  sha256 '71d46ff25e739f15819aee8ad4a9e021ecf5b31122fd96788c923810b63ea05b'
 
   url 'https://secure.flyingmeat.com/download/Acorn.zip'
   appcast 'http://www.flyingmeat.com/download/acorn5update.xml',
-          checkpoint: 'a00b7a314d4e3c1c29748aef856eff8fea178278e1129b5521bc044e6bc6d4d8'
+          checkpoint: '51d2bff7118dd2d82883732f119b9036e937471bac4f50d9510903e5bd24d9b4'
   name 'Acorn'
   homepage 'http://flyingmeat.com/acorn/'
   license :commercial

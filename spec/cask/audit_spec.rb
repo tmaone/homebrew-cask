@@ -124,6 +124,41 @@ describe Hbc::Audit do
       end
     end
 
+    describe "generic artifact checks" do
+      context "with no target" do
+        let(:cask_token) { 'generic-artifact-no-target' }
+        it { should fail_with(/target required for generic artifact/) }
+      end
+
+      context "with relative target" do
+        let(:cask_token) { 'generic-artifact-relative-target' }
+        it { should fail_with(/target must be absolute path for generic artifact/) }
+      end
+
+      context "with absolute target" do
+        let(:cask_token) { 'generic-artifact-absolute-target' }
+        it { should_not fail_with(/target required for generic artifact/) }
+      end
+    end
+
+    describe "url checks" do
+      context "given a block" do
+        let(:cask_token) { 'booby-trap' }
+
+        context "when loading the cask" do
+          it "does not evaluate the block" do
+            expect { cask }.to_not raise_error
+          end
+        end
+
+        context "when doing the audit" do
+          it "evaluates the block" do
+            expect { subject }.to raise_error("Boom")
+          end
+        end
+      end
+    end
+
     describe "audit of downloads" do
       let(:cask_token) { 'with-binary' }
       let(:cask) { Hbc.load(cask_token) }

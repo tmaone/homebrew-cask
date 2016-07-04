@@ -1,20 +1,22 @@
 cask 'intellij-idea' do
-  version '15.0.3'
-  sha256 '22f8d63d9c332bc3f60c1316da3a0c70218b2508619713cb7268ff7286baf92b'
+  version '2016.1.3'
+  sha256 '6da532f34b77a285f91756740cd548ab985bd5350f15e8de87c5bdfb6cc590dd'
 
-  url "https://download.jetbrains.com/idea/ideaIU-#{version}-custom-jdk-bundled.dmg"
+  url "https://download.jetbrains.com/idea/ideaIU-#{version}.dmg"
   name 'IntelliJ IDEA'
   homepage 'https://www.jetbrains.com/idea/'
   license :commercial
 
-  app 'IntelliJ IDEA 15.app'
+  auto_updates true
+
+  app 'IntelliJ IDEA.app'
+
+  uninstall delete: '/usr/local/bin/idea'
 
   zap delete: [
-                "~/.IntelliJIdea#{version.major}",
-                "~/Library/Caches/IntelliJIdea#{version.major}",
-                "~/Library/Logs/IntelliJIdea#{version.major}",
-                "~/Library/Application Support/IntelliJIdea#{version.major}",
-                "~/Library/Preferences/IntelliJIdea#{version.major}",
-                '~/Library/Preferences/com.jetbrains.intellij.plist',
+                "~/Library/Caches/IntelliJIdea#{version.major_minor}",
+                "~/Library/Logs/IntelliJIdea#{version.major_minor}",
+                "~/Library/Application Support/IntelliJIdea#{version.major_minor}",
+                "~/Library/Preferences/IntelliJIdea#{version.major_minor}",
               ]
 end

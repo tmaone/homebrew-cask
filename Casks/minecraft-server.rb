@@ -1,8 +1,8 @@
 cask 'minecraft-server' do
-  version '1.8.8'
-  sha256 '39aef720dc5309476f56f2e96a516f3dd3041bbbf442cbfd47d63acbd06af31e'
+  version '1.10.2'
+  sha256 '195f468227c5f9218f3919538b9b16ba34adced67fc7d7b652c508a5e8d07a21'
 
-  # amazonaws.com is the official download host per the vendor homepage
+  # s3.amazonaws.com/Minecraft.Download was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/Minecraft.Download/versions/#{version}/minecraft_server.#{version}.jar"
   name 'Minecraft Server'
   homepage 'https://minecraft.net/'
@@ -19,7 +19,7 @@ cask 'minecraft-server' do
     minecraft_server.puts '#!/bin/bash'
     minecraft_server.puts 'BASEDIR=$(dirname "$(readlink -n $0)")'
     minecraft_server.puts 'cd $BASEDIR'
-    minecraft_server.puts 'java -Xmx1024M -Xms1024M -jar minecraft_server.1.8.8.jar nogui'
+    minecraft_server.puts "java -Xmx1024M -Xms1024M -jar minecraft_server.#{version}.jar nogui"
     minecraft_server.close
   end
 
@@ -28,7 +28,7 @@ cask 'minecraft-server' do
     system 'minecraft-server'
 
     file_name = "#{staged_path}/EULA.txt"
-    contents = File.read(file_name).gsub(%r{false}, 'true')
+    contents = File.read(file_name).gsub(%r{false}, 'TRUE')
     File.open(file_name, 'w') { |file| file.puts contents }
   end
 

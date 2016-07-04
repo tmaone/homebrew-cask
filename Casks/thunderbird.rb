@@ -1,10 +1,10 @@
 cask 'thunderbird' do
-  version '38.6.0'
-  sha256 'ad6f9a2727c97b9435584eb1588715fde075c92f3ede559685d955a1212f9bf1'
+  version '45.1.1'
+  sha256 'bf0a169794938900e607c293b261f2b9a327bfd2801ae6967ffa33cac508e38a'
 
   url "https://download.mozilla.org/?product=thunderbird-#{version}&os=osx&lang=en-US"
   appcast "https://aus5.mozilla.org/update/3/Thunderbird/#{version}/0/Darwin_x86_64-gcc3-u-i386-x86_64/en-US/release/Darwin%2015.3.0/default/default/update.xml?force=1",
-          checkpoint: 'c829c340e6218d3e47a1044b592feb68c7499625103ae34ba27f94e5ea62eacb'
+          checkpoint: '121eb72f0664730809c856d3afecb9eefc7682b809881a8f0131250c947ef9ca'
   name 'Mozilla Thunderbird'
   homepage 'https://www.mozilla.org/en-US/thunderbird/'
   license :mpl

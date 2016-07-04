@@ -1,10 +1,10 @@
 cask 'nicecast' do
-  version '1.11.7'
-  sha256 'c840bcb98574fd919eae79acd97f89f0a1eac489313edf940f3efce61cfab908'
+  version '1.11.9'
+  sha256 '086844c526a15592ac4502347ca459b9d27ecf64e24882c4dcc78effbb43d104'
 
-  url 'https://www.rogueamoeba.com/nicecast/download.php'
-  appcast 'https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&bundleid=com.rogueamoeba.Nicecast&system=10113&platform=osx',
-          checkpoint: '4c5793276ba39f8b4e98c00e89e21e209e60fd4e4dd5c4b99f21ae7d01f4df0a'
+  url 'https://rogueamoeba.com/nicecast/download/Nicecast.zip'
+  appcast 'https://rogueamoeba.net/ping/versionCheck.cgi?format=sparkle&bundleid=com.rogueamoeba.Nicecast&system=10114',
+          checkpoint: 'e6532d6f30bf960696e21859e36d983e6772a1646bd889234fce71bcf3ec881f'
   name 'Nicecast'
   homepage 'https://rogueamoeba.com/nicecast'
   license :commercial

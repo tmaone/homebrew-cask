@@ -4,7 +4,10 @@ require 'test_helper'
 # - test that zap removes an alternate version of the same Cask
 describe Hbc::Artifact::Zap do
   let(:cask) { Hbc.load('with-installable') }
-  let(:zap_artifact) { Hbc::Artifact::Zap.new(cask, Hbc::FakeSystemCommand) }
+
+  let(:zap_artifact) do
+    Hbc::Artifact::Zap.new(cask, command: Hbc::FakeSystemCommand)
+  end
 
   before {
     shutup do
@@ -273,7 +276,7 @@ describe Hbc::Artifact::Zap do
       let(:script_pathname) { cask.staged_path.join('MyFancyPkg','FancyUninstaller.tool') }
 
       it 'can zap' do
-        Hbc::FakeSystemCommand.expects_command(%w[/bin/chmod +x --] + [script_pathname])
+        Hbc::FakeSystemCommand.expects_command(%w[/bin/chmod -- +x] + [script_pathname])
 
         Hbc::FakeSystemCommand.expects_command(
           sudo(cask.staged_path.join('MyFancyPkg','FancyUninstaller.tool'), '--please'))
@@ -287,7 +290,7 @@ describe Hbc::Artifact::Zap do
       let(:script_pathname) { cask.staged_path.join('MyFancyPkg','FancyUninstaller.tool') }
 
       it 'can zap' do
-        Hbc::FakeSystemCommand.expects_command(%w[/bin/chmod +x --] + [script_pathname])
+        Hbc::FakeSystemCommand.expects_command(%w[/bin/chmod -- +x] + [script_pathname])
 
         Hbc::FakeSystemCommand.expects_command(
           sudo(cask.staged_path.join('MyFancyPkg','FancyUninstaller.tool'), '--please'))

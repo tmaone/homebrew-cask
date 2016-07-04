@@ -1,11 +1,11 @@
 cask 'pandoc' do
-  version '1.16.0.2'
-  sha256 'd1777fa45cb05518f79d4793a7e955a0f0927a934be4d112ff6926f1459b0c07'
+  version '1.17.0.2'
+  sha256 '79aa0bdbcc5df8c87041a5497f1dc090ea6d993a9788f650d53abf96c68228bd'
 
-  # github.com is the official download host per the vendor homepage
+  # github.com/jgm/pandoc was verified as official when first introduced to the cask
   url "https://github.com/jgm/pandoc/releases/download/#{version}/pandoc-#{version}-osx.pkg"
   appcast 'https://github.com/jgm/pandoc/releases.atom',
-          checkpoint: '29e6a6220ed4dd82ebeec5f2d41e3e507d892042e81ac1108a5bd17ee5804b49'
+          checkpoint: '2b4cb56d54977995bf215de6b8caf7964b9d5dbbeb79ef19c971e398e345b49b'
   name 'Pandoc'
   homepage 'http://pandoc.org/'
   license :gpl

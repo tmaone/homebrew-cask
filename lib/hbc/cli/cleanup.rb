@@ -6,6 +6,10 @@ class Hbc::CLI::Cleanup < Hbc::CLI::Base
     "cleans up cached downloads and tracker symlinks"
   end
 
+  def self.needs_init?
+    true
+  end
+
   def self.run(*_ignored)
     cleanup_size = default.disk_cleanup_size
     default.cleanup!
@@ -45,7 +49,7 @@ class Hbc::CLI::Cleanup < Hbc::CLI::Base
         Pathname.new(f.to_s.concat('.incomplete'))
       end
       incomplete_file = nil unless incomplete_file.exist?
-      incomplete_file = nil if outdated_only and incomplete_file and incomplete_file.stat.mtime > OUTDATED_TIMESTAMP
+      incomplete_file = nil if outdated_only && incomplete_file && incomplete_file.stat.mtime > OUTDATED_TIMESTAMP
       incomplete_file
     end.compact
   end
@@ -57,7 +61,7 @@ class Hbc::CLI::Cleanup < Hbc::CLI::Base
         f.exist? ? f.realpath : f
       end
       file = nil unless file.exist?
-      if outdated_only and file and file.stat.mtime > OUTDATED_TIMESTAMP
+      if outdated_only && file && file.stat.mtime > OUTDATED_TIMESTAMP
         file = nil
         symlink = nil
       end

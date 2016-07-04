@@ -1,10 +1,10 @@
 cask 'fantastical' do
-  version '2.1.5'
-  sha256 '816e780ead978f15fd1bb762c80f8c8a5abf9551c121ba502f61a528d962fb60'
+  version '2.2.4'
+  sha256 'cc7d9d2d153526db9274be678fa58cf1c434784f12018fcacde3be1b7a82fcfe'
 
   url "http://cdn.flexibits.com/Fantastical_#{version}.zip"
   appcast 'https://flexibits.com/fantastical/appcast2.php',
-          checkpoint: '891edbc3657ab7f08d356377092aa01beef808c6e7d5a19a99ef3d471786908a'
+          checkpoint: 'c0a148abbbda30ca633e733c330cccfd8298bfb6cb5bdfbf1a5a905b9372ef58'
   name 'Fantastical'
   homepage 'https://flexibits.com/fantastical'
   license :freemium

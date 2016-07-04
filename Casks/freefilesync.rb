@@ -1,8 +1,8 @@
 cask 'freefilesync' do
-  version '7.8'
-  sha256 '84dd8fc9fc2eebb35d6dd7ee153c772166d91a17e697701ba4521259da630fab'
+  version '8.2'
+  sha256 '6d89c15ebdb1be2c1d26d1103e549e4c6dc4805a6d897202bb4bb9715a033690'
 
-  url "http://www.freefilesync.org/download/gjcyjw75w8f260w/FreeFileSync_#{version}_Mac_OS_X_64-bit.zip",
+  url "http://www.freefilesync.org/download/FreeFileSync_#{version}_Mac_OS_X.zip",
       referer: 'http://www.freefilesync.org/download.php'
   name 'FreeFileSync'
   homepage 'http://www.freefilesync.org'

@@ -1,8 +1,8 @@
 cask 'fishapp' do
-  version '2.1.1'
-  sha256 '92af7a82e6f46b35867ca160e42ca55a65eb86404bff47b8db489952dab488fc'
+  version '2.3.0'
+  sha256 'a32412af0966b14d9f5702f51b2ffb263fbef066aaa4471df7912f93202b2830'
 
-  url "http://fishshell.com/files/#{version}/fish.app.zip"
+  url "http://fishshell.com/files/#{version}/fish-#{version}.app.zip"
   name 'Fish App'
   homepage 'http://fishshell.com'
   license :gpl

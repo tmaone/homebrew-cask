@@ -1,11 +1,11 @@
 cask 'origami' do
-  version '2.1.3'
-  sha256 'e97e9106d14c1beeb7a05019040b0a6f31691e4b0d1c8d3fb94e0de1b8110f72'
+  version '2.2'
+  sha256 '75ccca6120c9596b2994bf5e43871d6a437402f52da66c14d3426b16e0d2bac9'
 
-  # origami.facebook.com was verified as official when first introduced to the cask
-  url "https://origami.facebook.com/download/Origami-#{version}.zip"
-  appcast 'https://facebook.github.io/origami/update/updates.xml.rss',
-          checkpoint: '3545a46eb237f2628d404bfe845987a4411e937e95bd6d6cd3b1e679a0e332b3'
+  # github.com/facebook/origami was verified as official when first introduced to the cask
+  url "https://github.com/facebook/origami/releases/download/v#{version}/Origami-#{version}.zip"
+  appcast 'https://github.com/facebook/origami/releases.atom',
+          checkpoint: '685edf3bdbf3ab04011144521a4508aa97a4a2ddf798fa71a0d1d9a34c01f53c'
   name 'Origami'
   homepage 'https://facebook.github.io/origami'
   license :gratis

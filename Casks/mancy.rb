@@ -1,11 +1,11 @@
 cask 'mancy' do
-  version '2.2.1'
-  sha256 '23e7f2c611a7762fd091e594ad8b559c02f111e13a5153cf68f47c3805840ed6'
+  version '3.0.0'
+  sha256 '1e0df709ea909d1e2ec88f5a2bedb4b71d4c75ce0d1e67b909d0b02671af6ee6'
 
-  # github.com is the official download host per the vendor homepage
+  # github.com/princejwesley/Mancy was verified as official when first introduced to the cask
   url "https://github.com/princejwesley/Mancy/releases/download/v#{version}/Mancy-darwin-x64.zip"
   appcast 'https://github.com/princejwesley/Mancy/releases.atom',
-          checkpoint: '5c0778c413211456808d9f12028237ccae54c593f6264caea916ac4020cf2db7'
+          checkpoint: '2060ba97dc18075843a5d0908b73674a8f81412982e6a08b7d3db616dcc963f5'
   name 'Mancy'
   homepage 'http://www.mancy-re.pl/'
   license :mit

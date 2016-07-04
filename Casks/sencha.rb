@@ -1,6 +1,6 @@
 cask 'sencha' do
-  version '6.0.2.14'
-  sha256 '7d131f333585ed74a31c4c4efa9ecc5176cf5d5410eeddb631c974a847216cec'
+  version '6.1.3.42'
+  sha256 'dd43eb415ff101693c8343cef91d0cbd04889fe3e7574c09babc6562e961740b'
 
   url "https://cdn.sencha.com/cmd/#{version}/jre/SenchaCmd-#{version}-osx.app.zip"
   name 'Sencha Cmd'
@@ -16,7 +16,7 @@ cask 'sencha' do
   end
 
   uninstall script: {
-                      executable: "/opt/Sencha/Cmd/#{version}/.install4j/Sencha Cmd Uninstaller.app/Contents/MacOS/JavaApplicationStub",
+                      executable: "/opt/Sencha/Cmd/#{version}/Sencha Cmd Uninstaller.app/Contents/MacOS/JavaApplicationStub",
                       args:       ['-Djava.awt.headless=true', '-q'],
                       sudo:       true,
                     }

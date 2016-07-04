@@ -1,10 +1,10 @@
 cask 'hopper-disassembler' do
-  version '3.11.10'
-  sha256 '3624ec98e92f8224cffaf59b8e4226786ee4ed50eec3db7afa628ef91197358c'
+  version '3.11.16'
+  sha256 '99ab92dada4d42e72ac053e3939ab30931035581bd2bda7da96b85094c338f9e'
 
   url "http://www.hopperapp.com/HopperWeb/downloads/Hopper-#{version}.zip"
   appcast "http://www.hopperapp.com/HopperWeb/appcast_v#{version.major}.php",
-          checkpoint: '97de3ef0ead76c60ec0c259fe6150d509567611170e3c3050a468b4c0cfbfa33'
+          checkpoint: 'd24be268fb583328fac49d963e6ae4f93bc92c0ce49a744757752bba82352489'
   name 'Hopper Disassembler'
   homepage 'http://www.hopperapp.com/'
   license :commercial
@@ -13,7 +13,7 @@ cask 'hopper-disassembler' do
   depends_on macos: '>= :lion'
 
   app "Hopper Disassembler v#{version.major}.app"
-  binary "Hopper Disassembler v#{version.major}.app/Contents/MacOS/hopper"
+  binary "#{appdir}/Hopper Disassembler v#{version.major}.app/Contents/MacOS/hopper"
 
   zap delete: [
                 '~/Library/Application Support/Hopper',

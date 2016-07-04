@@ -120,7 +120,7 @@ class Hbc::CaveatsDSL
   def discontinued
     puts <<-EOS.undent
     #{@cask} has been officially discontinued upstream.
-    It may stop working correctly (or at all) in recent versions of OS X.
+    It may stop working correctly (or at all) in recent versions of macOS.
 
     EOS
   end
@@ -129,6 +129,22 @@ class Hbc::CaveatsDSL
     puts <<-EOS.undent
     The vendor offers a free license for #{@cask} at
       #{web_page}
+
+    EOS
+  end
+
+  def malware(radar_number)
+    puts <<-EOS.undent
+    #{@cask} has been reported to bundle malware. Like with any app, use at your own risk.
+
+    A report has been made to Apple about this app. Their certificate will hopefully be revoked.
+    See the public report at
+      https://openradar.appspot.com/#{radar_number}
+
+    If this report is accurate, please duplicate it at
+      https://bugreport.apple.com/
+    If this report is a mistake, please let us know by opening an issue at
+      https://github.com/caskroom/homebrew-cask/issues/new
 
     EOS
   end
