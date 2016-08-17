@@ -2,9 +2,9 @@ cask 'diskcatalogmaker' do
   version :latest
   sha256 :no_check
 
-  url 'http://diskcatalogmaker.com/download/zip/DiskCatalogMaker.zip'
+  url 'https://download.diskcatalogmaker.com/zip/DiskCatalogMaker.zip'
   name 'DiskCatalogMaker'
-  homepage 'http://diskcatalogmaker.com'
+  homepage 'https://diskcatalogmaker.com'
   license :freemium
 
   app 'DiskCatalogMaker.app'

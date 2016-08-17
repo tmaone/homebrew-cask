@@ -1,5 +1,5 @@
 cask 'ipswdownloader' do
-  if MacOS.release <= :snow_leopard
+  if MacOS.version <= :snow_leopard
     version '1.6.0'
     sha256 '82a236f69d2b7acfa9b0c801b9df76372005d5aab3f399f0d10db71320bb0af3'
     url 'http://www.igrsoft.com/wp-content/plugins/download-monitor/download.php?id=48'
@@ -10,7 +10,7 @@ cask 'ipswdownloader' do
   end
 
   name 'ipswDownloader'
-  homepage 'http://www.igrsoft.com/ipswdownloader/'
+  homepage 'https://www.igrsoft.com/ipswdownloader/'
   license :gratis
 
   app 'ipswDownloader.app'

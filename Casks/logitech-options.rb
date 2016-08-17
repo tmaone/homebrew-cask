@@ -1,18 +1,18 @@
 cask 'logitech-options' do
-  version '5.60.15'
-  sha256 '6ea4e1c157465362d50499a3336da9410a119bc63a98114b28dc51cebd0ddb5b'
+  version '6.00.3361'
+  sha256 '632cfd6469e50897a1aa46daccd71404cf0b7f69c39a6740be10e3f745a8fd0c'
 
   url "http://www.logitech.com/pub/techsupport/options/Options_#{version}.zip"
   name 'Logitech Options'
-  homepage 'https://support.logitech.com/en_us/software/options-mac'
+  homepage 'https://support.logitech.com/en_us/software/options'
   license :closed
 
-  depends_on macos: '>= :mountain_lion'
+  depends_on macos: '>= :mavericks'
 
-  pkg 'LogiMgr Installer.app/Contents/Resources/LogiMgr.mpkg'
+  pkg "LogiMgr Installer #{version}.app/Contents/Resources/LogiMgr.mpkg"
 
   uninstall script:  {
-                       executable: '/Applications/Utilities/LogiMgr Uninstaller.app/Contents/Resources/Uninstaller',
+                       executable: '/Applications/Utilities/Logitech Options Uninstaller.app/Contents/Resources/Uninstaller',
                        sudo:       false,
                      },
             pkgutil: [

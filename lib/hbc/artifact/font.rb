@@ -1,2 +1,4 @@
-class Hbc::Artifact::Font < Hbc::Artifact::Hardlinked
+require "hbc/artifact/moved"
+
+class Hbc::Artifact::Font < Hbc::Artifact::Moved
 end

@@ -5,8 +5,8 @@ class Hbc::CLI::Info < Hbc::CLI::Base
     cask_tokens.each do |cask_token|
       odebug "Getting info for Cask #{cask_token}"
       cask = Hbc.load(cask_token)
-      puts info(cask)
-      Hbc::Installer.print_caveats(cask)
+
+      info(cask)
     end
   end
 
@@ -15,58 +15,52 @@ class Hbc::CLI::Info < Hbc::CLI::Base
   end
 
   def self.info(cask)
-    installation = if cask.installed?
-                     "#{cask.staged_path} (#{Hbc::Utils.cabv(cask.staged_path)})"
-                   else
-                     "Not installed"
-                   end
-    # todo completely reformat the info report
-    <<-PURPOSE
-#{cask}: #{cask.version}
-#{formatted_name(cask) }
-#{cask.homepage or 'No Homepage'}
-#{installation}
-#{github_info(cask) or 'No GitHub URL'}
-#{artifact_info(cask) or 'No Artifact Info'}
-PURPOSE
+    puts "#{cask.token}: #{cask.version}"
+    puts formatted_url(cask.homepage) if cask.homepage
+    installation_info(cask)
+    puts "From: #{formatted_url(github_info(cask))}" if github_info(cask)
+    name_info(cask)
+    artifact_info(cask)
+    Hbc::Installer.print_caveats(cask)
   end
 
-  def self.formatted_name(cask)
-    # todo transitional: make name a required stanza, and then stop substituting cask.token here
-    cask.name.empty? ? cask.token : cask.name.join(', ')
+  def self.formatted_url(url)
+    "#{Hbc::Utils::Tty.underline}#{url}#{Hbc::Utils::Tty.reset}"
+  end
+
+  def self.installation_info(cask)
+    if cask.installed?
+      cask.versions.each do |version|
+        versioned_staged_path = cask.caskroom_path.join(version)
+
+        puts versioned_staged_path.to_s
+          .concat(" (")
+          .concat(versioned_staged_path.exist? ? versioned_staged_path.abv : "#{Hbc::Utils::Tty.red}does not exist#{Hbc::Utils::Tty.reset}")
+          .concat(")")
+      end
+    else
+      puts "Not installed"
+    end
+  end
+
+  def self.name_info(cask)
+    ohai cask.name.size > 1 ? "Names" : "Name"
+    puts cask.name.empty? ? "#{Hbc::Utils::Tty.red}None#{Hbc::Utils::Tty.reset}" : cask.name
   end
 
   def self.github_info(cask)
-    cask_token = cask.token
-    cask_token = Hbc.all_tokens.detect { |t| t.split("/").last == cask_token } unless cask_token =~ /\//
-    return nil unless cask_token.respond_to?(:length) && cask_token.length > 0
-    path_elements = cask_token.split '/'
-    if path_elements.count == 2
-      # eg caskroom-cask/google-chrome.
-      # Not certain this form is needed, but it was supported in the past.
-      token = path_elements[1]
-      dash_elements = path_elements[0].split('-')
-      repo = dash_elements.pop
-      dash_elements.pop if dash_elements.count > 1 && dash_elements[-1] + '-' == repo_prefix
-      user = dash_elements.join('-')
-    else
-      user, repo, token = path_elements
-    end
-    repo.sub!(/^homebrew-/i, '')
-    "https://github.com/#{user}/homebrew-#{repo}/blob/master/Casks/#{token}.rb"
+    user, repo, token = Hbc::QualifiedToken.parse(Hbc.all_tokens.detect { |t| t.split("/").last == cask.token })
+    "#{Tap.fetch(user, repo).default_remote}/blob/master/Casks/#{token}.rb"
   end
 
   def self.artifact_info(cask)
-    retval = ''
+    ohai "Artifacts"
     Hbc::DSL::ORDINARY_ARTIFACT_TYPES.each do |type|
-      if cask.artifacts[type].length > 0
-        retval = "#{Tty.blue.bold}==>#{Tty.reset.bold} Contents#{Tty.reset}\n" unless retval.length > 0
-        cask.artifacts[type].each do |artifact|
-          activatable_item = type == :stage_only ? '<none>' : artifact.first
-          retval.concat "  #{activatable_item} (#{type.to_s})\n"
-        end
+      next if cask.artifacts[type].empty?
+      cask.artifacts[type].each do |artifact|
+        activatable_item = type == :stage_only ? "<none>" : artifact.first
+        puts "#{activatable_item} (#{type})"
       end
     end
-    retval.sub!(/\n\Z/, '')
   end
 end

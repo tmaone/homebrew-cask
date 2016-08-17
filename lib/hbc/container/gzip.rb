@@ -1,18 +1,18 @@
+require "tmpdir"
 
-# for pure gzip only, not tar-gzip (.tgz or .tar.gz)
-
-require 'tmpdir'
+require "hbc/container/base"
 
 class Hbc::Container::Gzip < Hbc::Container::Base
   def self.me?(criteria)
-    criteria.file.include? 'compressed-encoding=application/x-gzip;'
+    criteria.magic_number(%r{^\037\213}n)
   end
 
   def extract
     Dir.mktmpdir do |unpack_dir|
-      @command.run!('/usr/bin/ditto',  :args => ['--', @path, unpack_dir])
-      @command.run!('/usr/bin/gunzip', :args => ['-q', '--', Pathname(unpack_dir).join(@path.basename)])
-      @command.run!('/usr/bin/ditto',  :args => ['--', unpack_dir, @cask.staged_path])
+      @command.run!("/usr/bin/ditto",  args: ["--", @path, unpack_dir])
+      @command.run!("/usr/bin/gunzip", args: ["--quiet", "--", Pathname.new(unpack_dir).join(@path.basename)])
+
+      extract_nested_inside(unpack_dir)
     end
   end
 end

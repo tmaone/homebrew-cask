@@ -1,10 +1,10 @@
 cask 'polymail' do
-  version '0.92'
-  sha256 '257aeebbddff10b1048f4c717aa7f49f4b7d658eb8cf26a4bab60bda7b55b82a'
+  version '1.05'
+  sha256 '2cb135991959c112f0b75bd345f77a8da0a339ffe32acb290ab59b996e56d4bb'
 
-  url "https://sparkle-updater.polymail.io/osx/builds/Polymail-v#{version.no_dots}.zip"
+  url "https://sparkle-updater.polymail.io/osx/builds/Polymail-v#{version.major_minor.no_dots}.zip"
   appcast 'https://sparkle-updater.polymail.io/cast.xml',
-          checkpoint: 'b34f147a02724f6ed1f01a14a0f7ea3dc009341e78f405e81854006c82a84a37'
+          checkpoint: 'd811e9dbeb17e9b8f7f194dda4793fd1b7fdbf3187f39d748a6771813b936f9f'
   name 'Polymail'
   homepage 'https://polymail.io/'
   license :closed

@@ -1,56 +1,68 @@
-require 'pathname'
-require 'rspec/its'
-require 'rspec/wait'
+require "pathname"
+require "rspec/its"
+require "rspec/wait"
 
-if ENV['COVERAGE']
-  require 'coveralls'
+if ENV["COVERAGE"]
+  require "coveralls"
   Coveralls.wear_merged!
 end
 
 # just in case
-if RUBY_VERSION.to_i < 2
-  raise 'brew-cask: Ruby 2.0 or greater is required.'
-end
+raise "brew-cask: Ruby 2.0 or greater is required." if RUBY_VERSION.to_i < 2
 
-project_root = Pathname(File.expand_path("../..", __FILE__))
+project_root = Pathname.new(File.expand_path("../..", __FILE__))
 
-Dir["#{project_root}/spec/support/*.rb"].each { |f| require f }
+# add Homebrew to load path
+$LOAD_PATH.unshift(File.expand_path("#{ENV['HOMEBREW_REPOSITORY']}/Library/Homebrew"))
 
-# todo: removeme, this is transitional
-include HomebrewTestingEnvironment
+require "global"
+require "extend/pathname"
+
+# add Homebrew-Cask to load path
+$LOAD_PATH.push(project_root.join("lib").to_s)
 
 # force some environment variables
-ENV['HOMEBREW_CASK_OPTS'] = nil
+ENV["HOMEBREW_NO_EMOJI"] = "1"
+ENV["HOMEBREW_CASK_OPTS"] = nil
+
+Dir["#{project_root}/spec/support/*.rb"].each(&method(:require))
 
 # from Homebrew. Provides expects method.
-require 'mocha/api'
+require "mocha/api"
 
-# add homebrew-cask lib to load path
-$:.push(project_root.join('lib').to_s)
+require "hbc"
 
-require 'hbc'
+class Hbc::TestCask < Hbc::Cask; end
 
-module Hbc
-  class TestCask < Cask; end
+TEST_TMPDIR = Dir.mktmpdir("homebrew_cask_tests")
+at_exit do
+  FileUtils.remove_entry(TEST_TMPDIR)
 end
 
 # override Homebrew locations
-Hbc.homebrew_prefix = Pathname.new(TEST_TMPDIR).join('prefix')
+Hbc.homebrew_prefix = Pathname.new(TEST_TMPDIR).join("prefix")
 Hbc.homebrew_repository = Hbc.homebrew_prefix
-Hbc.homebrew_tapspath = nil
-Hbc.binarydir = Hbc.homebrew_prefix.join('binarydir').join('bin')
-Hbc.appdir = Pathname.new(TEST_TMPDIR).join('appdir')
+Hbc.binarydir = Hbc.homebrew_prefix.join("binarydir", "bin")
+Hbc.appdir = Pathname.new(TEST_TMPDIR).join("appdir")
 
-# making homebrew's cache dir allows us to actually download Casks in tests
-HOMEBREW_CACHE.mkpath
-HOMEBREW_CACHE.join('Casks').mkpath
+# Override Tap::TAP_DIRECTORY to use our test Tap directory.
+class Tap
+  send(:remove_const, :TAP_DIRECTORY)
+  TAP_DIRECTORY = Hbc.homebrew_repository.join("Library", "Taps")
+end
 
-# Look for Casks in testcasks by default.  It is elsewhere required that
-# the string "test" appear in the directory name.
-Hbc.default_tap = project_root.join('spec', 'support')
+Hbc.default_tap = Tap.fetch("caskroom", "speccasks")
+Hbc.default_tap.path.dirname.mkpath
+
+# also jack in some test Casks
+FileUtils.ln_s project_root.join("spec", "support"), Tap::TAP_DIRECTORY.join("caskroom", "homebrew-speccasks")
+
+# create cache directory
+Hbc.homebrew_cache = Pathname.new(TEST_TMPDIR).join("cache")
+Hbc.cache.mkpath
 
 # our own testy caskroom
-Hbc.caskroom = Hbc.homebrew_prefix.join('TestCaskroom')
+Hbc.caskroom = Hbc.homebrew_prefix.join("TestCaskroom")
 
 RSpec.configure do |config|
   config.order = :random
