@@ -1,11 +1,10 @@
 cask 'qt-creator' do
-  version '4.0.3'
-  sha256 '66e75214f6fb98508584851ff29402ddb9ce55958c427648df3650fcbfff9b23'
+  version '4.2.0'
+  sha256 '5b9d7fda77b6d3e98bb65d1fb7a33552f4a2e0e8533930c6acc0fbbbeb60dc21'
 
   url "http://download.qt.io/official_releases/qtcreator/#{version.major_minor}/#{version}/qt-creator-opensource-mac-x86_64-#{version}.dmg"
   name 'Qt Creator'
   homepage 'https://www.qt.io/developers/'
-  license :gpl
 
   app 'Qt Creator.app'
 end

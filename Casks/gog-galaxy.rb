@@ -1,11 +1,10 @@
 cask 'gog-galaxy' do
-  version '1.1.12.113'
-  sha256 'a09d73fac25017df7ac3b0dc0aafe1a08708c2a3be9729d9695a0fac84216df5'
+  version '1.1.25.24'
+  sha256 'd66d90772bcc11a0bc1bdcdf74fc06af665cba2be82cde73b06f19682b94ebed'
 
   url "https://cdn.gog.com/open/galaxy/client/galaxy_client_#{version}.pkg"
   name 'GOG Galaxy Client'
   homepage 'https://www.gog.com/galaxy'
-  license :gratis
 
   depends_on macos: '>= :mountain_lion'
 

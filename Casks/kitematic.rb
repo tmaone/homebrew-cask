@@ -5,15 +5,17 @@ cask 'kitematic' do
   # github.com/docker/kitematic was verified as official when first introduced to the cask
   url "https://github.com/docker/kitematic/releases/download/v#{version}/Kitematic-#{version}-Mac.zip"
   appcast 'https://github.com/docker/kitematic/releases.atom',
-          checkpoint: '75e425c2b970eb5481b53aa1883abf2e0852015e379d8979f5af095257cc8d25'
+          checkpoint: 'eec5e42824a67b64e2575b5bd1af8f1841d2bf4920d20aa21a5f363eec0e322b'
   name 'Kitematic'
   homepage 'https://kitematic.com/'
-  license :apache
 
   app 'Kitematic (Beta).app'
 
   zap delete: [
-                '~/Library/Application Support/Kitematic',
                 '~/Kitematic',
+                '~/Library/Application Support/Kitematic',
+                '~/Library/Caches/Kitematic',
+                '~/Library/Preferences/com.electron.kitematic_(beta).plist',
+                '~/Library/Saved Application State/com.electron.kitematic_(beta).savedState',
               ]
 end

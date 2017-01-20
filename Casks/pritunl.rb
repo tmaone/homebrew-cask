@@ -1,18 +1,21 @@
 cask 'pritunl' do
-  version '0.10.19'
-  sha256 'b8771e4d0ff62db39a1fec3bc17c3b37fd2d92aacc50c392b1a4e48aa182002b'
+  version '1.0.1223.17'
+  sha256 'df3673fb3d066c1a7a18433c4cc3df101d893c384e91567fa51545bfa3475129'
 
   # github.com/pritunl/pritunl-client-electron was verified as official when first introduced to the cask
   url "https://github.com/pritunl/pritunl-client-electron/releases/download/#{version}/Pritunl.pkg.zip"
   appcast 'https://github.com/pritunl/pritunl-client-electron/releases.atom',
-          checkpoint: '244bf89b155fe8c46f53ec71ca6d9286fbb5fe0132575601fcfb0ab1b941eae4'
+          checkpoint: '46ef0627af08fb0d065a5addd0129ef1f615e8a8c2b56ab9618c4877a0cc5a64'
   name 'Pritunl OpenVPN Client'
-  homepage 'https://client.pritunl.com'
-  license :gpl
+  homepage 'https://client.pritunl.com/'
 
   pkg 'Pritunl.pkg'
 
-  uninstall pkgutil: 'com.pritunl.pkg.Pritunl'
+  uninstall pkgutil:   'com.pritunl.pkg.Pritunl',
+            launchctl: [
+                         'com.pritunl.client',
+                         'com.pritunl.service',
+                       ]
 
   zap delete: [
                 '~/Library/Application Support/pritunl',

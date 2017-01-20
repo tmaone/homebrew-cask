@@ -1,18 +1,20 @@
 cask 'vagrant' do
-  version '1.8.5'
-  sha256 'f12879c4890c39ec49af95153a6151b19fd137cbdccf7db22470f31464b9dd56'
+  version '1.9.1'
+  sha256 '17191ff7a1d796aa89c558b45c706288275dade6a65e2b219c2efa0e54c02ef7'
 
   # hashicorp.com/vagrant was verified as official when first introduced to the cask
   url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}.dmg"
   appcast 'https://github.com/mitchellh/vagrant/releases.atom',
-          checkpoint: 'c483a3c39832e1df793662c0415291fd0f6494f2c9bf5696cabc1666ef90579e'
+          checkpoint: 'd3d0452d55c76d71c91b71ff2026b16e6acb61b7662adf9f36c284bcc50d5726'
   name 'Vagrant'
   homepage 'https://www.vagrantup.com/'
-  license :mit
 
   pkg 'Vagrant.pkg'
 
-  uninstall script:  { executable: 'uninstall.tool', input: %w[Yes] },
+  uninstall script:  {
+                       executable: 'uninstall.tool',
+                       input:      %w[Yes],
+                     },
             pkgutil: 'com.vagrant.vagrant'
 
   zap delete: '~/.vagrant.d'

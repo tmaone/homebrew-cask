@@ -2,13 +2,11 @@ cask 'outguess' do
   version :latest
   sha256 :no_check
 
-  url 'https://www.rbcafe.com/download/outguess.zip'
+  url 'http://www.rbcafe.com/download/outguess.zip'
   name 'Outguess'
-  homepage 'https://www.rbcafe.com/softwares/outguess/'
-  license :gratis
+  homepage 'http://www.rbcafe.com/software/outguess/'
 
   depends_on macos: '>= :mountain_lion'
-  depends_on arch: :intel
 
   app 'Outguess.app'
 end

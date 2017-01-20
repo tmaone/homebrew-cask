@@ -1,14 +1,13 @@
 cask 'dropshare' do
-  version '4-4225'
-  sha256 '5df1c6b3881a4154739d46c54ffaf788f4510b5993d2a3f13a16906376488bcc'
+  version '4.5.2,4558'
+  sha256 '4c0d5d73eb003684ab9b0f1e543f5bd8bb5d733f853c97b357d4d3250a3fa9aa'
 
   # d2wvuuix8c9e48.cloudfront.net was verified as official when first introduced to the cask
-  url "https://d2wvuuix8c9e48.cloudfront.net/Dropshare#{version}.app.zip"
-  appcast 'https://getdropsha.re/sparkle/Dropshare4.xml',
-          checkpoint: '73ce42eac41c72ca5f1f4dacf8d7331122f75f30288137bf28d03ef9f0cd4f67'
+  url "https://d2wvuuix8c9e48.cloudfront.net/Dropshare#{version.major}-#{version.after_comma}.app.zip"
+  appcast "https://getdropsha.re/sparkle/Dropshare#{version.major}.xml",
+          checkpoint: '18b2b7d72d2c911ee76b4aa98747d5592d93a5fef11ae84035e1d8c64d614fea'
   name 'Dropshare'
   homepage 'https://getdropsha.re/'
-  license :commercial
 
-  app 'Dropshare 4.app'
+  app "Dropshare #{version.major}.app"
 end

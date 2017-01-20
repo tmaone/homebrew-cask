@@ -1,11 +1,10 @@
 cask 'phpstorm' do
-  version '2016.2'
-  sha256 '3b431f0fb4f3446b9b6aa808af1606929a65dc4329165b1d2fccad9b2e79ee90'
+  version '2016.3.2'
+  sha256 '7e553c83e8af822cd100832ecc107f16fc1006314fea4c4f52a35d7bb14a0967'
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version}.dmg"
   name 'JetBrains PhpStorm'
   homepage 'https://www.jetbrains.com/phpstorm/'
-  license :commercial
 
   app 'PhpStorm.app'
 

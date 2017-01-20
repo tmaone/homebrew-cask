@@ -1,19 +1,18 @@
 cask 'quicksilver' do
   if MacOS.version <= :snow_leopard
-    version '1.0.0-16384'
+    version '1.0.0'
     sha256 '0afb16445d12d7dd641aa8b2694056e319d23f785910a8c7c7de56219db6853c'
   elsif MacOS.version <= :mountain_lion
-    version '1.2.0-16399'
+    version '1.2.0'
     sha256 '08c5aeaa7fe89427bcec30a9700eb0b7484bd68b647776b2c82c95355d1679d4'
   else
-    version '1.4.1-16409'
-    sha256 'eaa49618720db8889e041bc9559448ed438a9ab6926596f5061bc6215d5ff94f'
+    version '1.5.2'
+    sha256 'b697960aa032436b8c61120965b7ea78d3e10b2894ef83f19326508c7f85d6a8'
   end
 
-  url "https://qs0.qsapp.com/plugins/download.php?qsversion=#{version.sub(%r{^.*?-}, '')}.dmg"
+  url "https://qsapp.com/archives/downloads/Quicksilver%20#{version}.dmg"
   name 'Quicksilver'
   homepage 'https://qsapp.com/'
-  license :apache
 
   app 'Quicksilver.app'
 

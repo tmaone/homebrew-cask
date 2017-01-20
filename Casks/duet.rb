@@ -1,14 +1,13 @@
 cask 'duet' do
-  version '1.5.4.9'
-  sha256 'ee6334cb41f2d0a3d164b5c1de61d40f70d4cd9c829a35beba437ba9f6919d55'
+  version '1.6.3.4'
+  sha256 'bfd491368cb255d14f69fa055ffb7d0bc2ae9c4fee067384b17ae5601f0bddc2'
 
-  # d2ycb980mbr5lq.cloudfront.net was verified as official when first introduced to the cask
-  url "https://d2ycb980mbr5lq.cloudfront.net/#{version.dots_to_underscores}/duet-#{version.dots_to_hyphens}.zip"
+  # s3-us-west-1.amazonaws.com/duetmac/ was verified as official when first introduced to the cask
+  url "https://s3-us-west-1.amazonaws.com/duetmac/#{version.major_minor_patch.dots_to_underscores}/duet-#{version.dots_to_hyphens}.zip"
   appcast 'https://updates.duetdisplay.com/checkMacUpdates',
-          checkpoint: '01a04fe0630a818640a6e9fa9040113791192369529cb757f570a03e19b257f0'
+          checkpoint: 'ead13c59711365f14dbf78817c8e9eac21c112735792ca1631166dc0ef3c5ea4'
   name 'Duet'
-  homepage 'http://www.duetdisplay.com/'
-  license :gratis
+  homepage 'https://www.duetdisplay.com/'
 
   auto_updates true
 

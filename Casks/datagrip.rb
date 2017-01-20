@@ -1,11 +1,10 @@
 cask 'datagrip' do
-  version '2016.2'
-  sha256 'f4bb5c6345bfa6e1d8478314bc5f8f38be654c7e86d9f9782b208a03fbb2b085'
+  version '2016.3.2'
+  sha256 '1ffb0849dfc4eff4158da1cc744f09ebbf12f1087568445a3de4abc518b2733f'
 
   url "https://download.jetbrains.com/datagrip/datagrip-#{version}.dmg"
   name 'DataGrip'
   homepage 'https://www.jetbrains.com/datagrip/'
-  license :commercial
 
   conflicts_with cask: 'datagrip-eap'
 

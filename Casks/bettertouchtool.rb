@@ -6,20 +6,18 @@ cask 'bettertouchtool' do
     # bettertouchtool.net was verified as official when first introduced to the cask
     url "https://bettertouchtool.net/btt#{version}.zip"
 
-    license :gratis
   else
-    version '1.82'
-    sha256 'e7fc0cf1267b7a07d512a9033cb796fe9c086abcacd3ccb0e2d5ab368dfea534'
+    version '1.991'
+    sha256 'e68965265afaaff5727d880b2a89b676cc17bdf9f33d21ba7a1c3b119d754817'
 
     url "https://boastr.net/releases/btt#{version}.zip"
     appcast 'http://appcast.boastr.net',
-            checkpoint: '53420365a59bf4b6bf96e270fda99d1cc339be77b2c34002f4c3a76571674f1e'
+            checkpoint: 'a0456c391f5c6c6e89804b7ee0a39ad5686f7c89a6b479ee50965b9d1c8a0abf'
 
-    license :commercial
   end
 
   name 'BetterTouchTool'
-  homepage 'https://boastr.net/'
+  homepage 'https://www.boastr.net/'
 
   auto_updates true
   accessibility_access true

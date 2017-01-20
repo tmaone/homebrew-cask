@@ -1,12 +1,11 @@
 cask 'freefilesync' do
-  version '8.3'
-  sha256 '1148cff841216da38a2d07b522d32709b6274760aa47dea9760ba4e3dd93f3c3'
+  version '8.6'
+  sha256 'aaa1dd1e2dfcc39bf4673d8280cc6561ee8dc9921c4deb926ed336dd5aa1d57b'
 
-  url "http://www.freefilesync.org/download/FreeFileSync_#{version}_Mac_OS_X.zip",
-      referer: 'https://www.freefilesync.org/download.php'
+  # download1606.mediafire.com/hmk8823hmgqg/bzdxny1n7cxozkh was verified as official when first introduced to the cask.
+  url "https://download1606.mediafire.com/hmk8823hmgqg/bzdxny1n7cxozkh/FreeFileSync_#{version}_macOS.zip"
   name 'FreeFileSync'
-  homepage 'http://www.freefilesync.org'
-  license :gpl
+  homepage 'http://www.freefilesync.org/'
 
   app 'FreeFileSync.app'
   app 'RealtimeSync.app'

@@ -1,11 +1,12 @@
 cask 'pycharm' do
-  version '2016.2'
-  sha256 'e072f026460f6e122de2645cc2d18bd9f2e5ea63649b4b8688110fb5b3027e76'
+  version '2016.3.2'
+  sha256 '20436a4faffe5d8251c3a41c59f0aa10548719a10f7052ccbf0ff236e5237838'
 
   url "https://download.jetbrains.com/python/pycharm-professional-#{version}.dmg"
+  appcast 'https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=release',
+          checkpoint: '07878d7ff3f6c98608f0c7819c5b4ead2f1a6ac06cd57d60444f3b77e4015fab'
   name 'PyCharm'
   homepage 'https://www.jetbrains.com/pycharm/'
-  license :commercial
 
   conflicts_with cask: 'pycharm-eap'
 
