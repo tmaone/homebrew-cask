@@ -1,13 +1,22 @@
 cask 'writefull' do
-  version '3.0.0-beta10-patch2'
-  sha256 'a6690158f67ff3e107c37f92995b5f3cb4757d306025c352bcbb39dca7549cdb'
+  version '3.0.0-beta17'
+  sha256 'da1a9e1d39512c275d57de7de1f01b08ff9132258b02e514d1bd86c388a0fd8c'
 
-  # github.com/paraphrase-ai/writefull-releases was verified as official when first introduced to the cask
-  url "https://github.com/paraphrase-ai/writefull-releases/releases/download/#{version}/Writefull.dmg"
-  appcast 'https://github.com/paraphrase-ai/writefull-releases/releases.atom',
-          checkpoint: '7c9ae4a6c5ebb22eb50af62f4167c813c76da523a9743fd266fb45bff0a810c6'
+  # d3aw1w08kaciwn.cloudfront.net was verified as official when first introduced to the cask
+  url "https://d3aw1w08kaciwn.cloudfront.net/#{version}/Writefull.dmg"
+  appcast 'https://writefullapp.com/js/download-urls.js',
+          checkpoint: 'c264817170cd61498505d1f26cb84a86688751fb3fccc1b47e044aba5f29e0fd'
   name 'Writefull'
   homepage 'https://writefullapp.com/'
 
-  app "Writefull_#{version.major}beta.app"
+  app 'Writefull.app'
+
+  zap delete: [
+                '~/Library/Application Support/Writefull_3beta',
+                '~/Library/Application Support/com.paraphrase.Writefull.ShipIt',
+                '~/Library/Caches/Writefull_3beta',
+                '~/Library/Caches/com.paraphrase.Writefull',
+                '~/Library/Preferences/com.paraphrase.Writefull.plist',
+                '~/Library/Saved Application State/com.paraphrase.Writefull.savedState',
+              ]
 end

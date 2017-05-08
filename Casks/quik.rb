@@ -1,8 +1,8 @@
 cask 'quik' do
-  version '2.1.0.5429'
-  sha256 '42b36d79373ffe159a1b5a8ecbef9070673a1527e33daddca95d7b6546008851'
+  version '2.3.0.6256'
+  sha256 '05d42843f01b43b74b7eaebda3296dc5a15ea1fb38040eff30dca89d48f7fede'
 
-  url "https://software.gopro.com/Mac/Quik-MacInstaller-#{version}.dmg"
+  url "https://software.gopro.com/Mac/GoPro_Quik-MacInstaller-#{version}.dmg"
   name 'GoPro Quik'
   homepage 'https://shop.gopro.com/softwareandapp/quik-%7C-desktop/Quik-Desktop.html'
 

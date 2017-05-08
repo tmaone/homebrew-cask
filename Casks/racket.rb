@@ -1,9 +1,11 @@
 cask 'racket' do
-  version '6.7'
-  sha256 'abd6d9da0b09c3dc9d06e5a48ebb5e567f57ffa1584f4f262f9e6ecca9d8108a'
+  version '6.9'
+  sha256 '03e093aa5f4100c021087749ff56900dc9adfc8067f18a51065f436f58a3bd50'
 
   # cs.utah.edu/plt/installers was verified as official when first introduced to the cask
   url "https://www.cs.utah.edu/plt/installers/#{version}/racket-#{version}-x86_64-macosx.dmg"
+  appcast 'https://download.racket-lang.org/all-versions.html',
+          checkpoint: 'fa3b5479dc4027a247f4d97304a7c25e717c8ce36121d5a8222c807b60bdfa80'
   name 'Racket'
   homepage 'https://racket-lang.org/'
 
@@ -30,13 +32,4 @@ cask 'racket' do
   binary "#{appdir}/Racket v#{version}/bin/slatex"
   binary "#{appdir}/Racket v#{version}/bin/slideshow"
   binary "#{appdir}/Racket v#{version}/bin/swindle"
-
-  caveats <<-EOS.undent
-    MacBook Pro with Touch Bar users:
-    To avoid a bug in this version that prevents programs from working with the Touch Bar, use the 32-bit version or try a snapshot build:
-      https://pre.racket-lang.org/installers/
-
-    More information on the download page:
-      https://download.racket-lang.org/
-  EOS
 end

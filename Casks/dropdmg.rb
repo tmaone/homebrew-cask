@@ -1,6 +1,6 @@
 cask 'dropdmg' do
-  version '3.4.4'
-  sha256 '1d21d12b6314a119f8d40446479d4bb544f963a5ebf707d9198f63974c8a358f'
+  version '3.4.6'
+  sha256 '90d130084b39bd1b42f0cc140e8dbc972e0f6dc9583a42322b44631a2d6086fe'
 
   url "https://c-command.com/downloads/DropDMG-#{version}.dmg"
   name 'DropDMG'
@@ -9,8 +9,10 @@ cask 'dropdmg' do
   app 'DropDMG.app'
 
   zap delete: [
+                '~/Library/Application Support/DropDMG',
                 '~/Library/Automator/DropDMG.action',
                 '~/Library/Automator/Expand Disk Image.action',
-                '~Library/Preferences/com.c-command.DropDMG.plist',
+                '~/Library/Caches/com.c-command.DropDMG',
+                '~/Library/Preferences/com.c-command.DropDMG.plist',
               ]
 end

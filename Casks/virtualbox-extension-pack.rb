@@ -1,18 +1,10 @@
 cask 'virtualbox-extension-pack' do
-  if MacOS.version <= :lion
-    version '4.3.40-110317a'
-    sha256 '829812f9a94204cd206968a8b8c3ca14f719f9cc8e3e1c6825b68c2c3da13033'
-  elsif MacOS.version == :mountain_lion
-    version '5.0.32-112930'
-    sha256 '3a0c45eb2471566787def7d73f8c01b03a806e5b2042c21911c2142dafdf9a44'
-  else
-    version '5.1.14-112924'
-    sha256 'baddb7cc49224ecc1147f82d77fce2685ac39941ac9b0aac83c270dd6570ea85'
-  end
+  version '5.1.22-115126'
+  sha256 '244e6f450cba64e0b025711050db3c43e6ce77e12cd80bcd08796315a90c8aaf'
 
   url "http://download.virtualbox.org/virtualbox/#{version.sub(%r{-.*}, '')}/Oracle_VM_VirtualBox_Extension_Pack-#{version}.vbox-extpack"
   appcast 'http://download.virtualbox.org/virtualbox/LATEST.TXT',
-          checkpoint: '69ff967697383e82adfccadcc6e493391648adb709c427d4fef9ded116c08798'
+          checkpoint: '4bc244bbabe0bdb1c33d1813128589ceb3112be9ccebfccc1100ff6ca358b1c3'
   name 'Oracle VirtualBox Extension Pack'
   homepage 'https://www.virtualbox.org/'
 
@@ -25,7 +17,8 @@ cask 'virtualbox-extension-pack' do
     system_command '/usr/local/bin/VBoxManage',
                    args: [
                            'extpack', 'install',
-                           '--replace', "#{staged_path}/Oracle_VM_VirtualBox_Extension_Pack-#{version}.vbox-extpack"
+                           '--replace', "#{staged_path}/Oracle_VM_VirtualBox_Extension_Pack-#{version}.vbox-extpack",
+                           '--accept-license=715c7246dc0f779ceab39446812362b2f9bf64a55ed5d3a905f053cfab36da9e'
                          ],
                    sudo: true
   end
@@ -38,4 +31,11 @@ cask 'virtualbox-extension-pack' do
                          ],
                    sudo: true
   end
+
+  caveats <<-EOS.undent
+    Installing this Cask means you have AGREED to the
+    VirtualBox Personal Use and Evaluation License at
+
+    https://www.virtualbox.org/wiki/VirtualBox_PUEL
+  EOS
 end

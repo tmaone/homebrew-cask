@@ -1,10 +1,10 @@
 cask 'together' do
-  version '3.7.2'
-  sha256 '6eff75da6e921f928a28e47eeeaf31d64c0a9704b480a324073d7c90006e3ad6'
+  version '3.8.2'
+  sha256 '00ac790499b98a90cf674941fded3f91d15b8daf304c1a855a16eeaa21e722d6'
 
   url "https://reinventedsoftware.com/together/downloads/Together_#{version}.dmg"
   appcast "https://reinventedsoftware.com/together/downloads/Together#{version.major}.xml",
-          checkpoint: '058dc2255d7c6e0efeda24954456e5810451337495d868270f6ecc43d892e26c'
+          checkpoint: '4c38c1d6a8add7cae337594f77bc9c073d2f8bd21ca945003ef3f69ae341134c'
   name 'Together'
   homepage 'https://reinventedsoftware.com/together/'
 

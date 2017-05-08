@@ -1,10 +1,10 @@
 cask 'webstorm' do
-  version '2016.3.2'
-  sha256 'dff270f0293685660bc3beb13765e4d9b840b92a06b9aa02414282bda4853b41'
+  version '2017.1.2,171.4249.40'
+  sha256 '704124e005a819faa53dfa80d8705a29f8c395e8d66dfa4a2760aaf66aeaef81'
 
-  url "https://download.jetbrains.com/webstorm/WebStorm-#{version}.dmg"
+  url "https://download.jetbrains.com/webstorm/WebStorm-#{version.before_comma}.dmg"
   appcast 'https://data.services.jetbrains.com/products/releases?code=WS&latest=true&type=release',
-          checkpoint: '8b57d4fdf9a6c8233cc202a582fd5ff01185a5c307b41d2844c85becac0aced8'
+          checkpoint: '1363240a69d580393b24d64ff606a2084e6a6a9770129d4cdcd2d583fbffe7f9'
   name 'WebStorm'
   homepage 'https://www.jetbrains.com/webstorm/'
 
@@ -13,7 +13,9 @@ cask 'webstorm' do
 
   app 'WebStorm.app'
 
-  uninstall delete: '/usr/local/bin/wstorm'
+  uninstall_postflight do
+    ENV['PATH'].split(File::PATH_SEPARATOR).map { |path| File.join(path, 'wstorm') }.each { |path| File.delete(path) if File.exist?(path) }
+  end
 
   zap delete: [
                 "~/Library/Application Support/WebStorm#{version.major_minor}",

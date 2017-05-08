@@ -1,18 +1,14 @@
 cask 'fly' do
-  version '2.6.0'
-  sha256 '5da021282209ad09ac99844b506b8a6ea082837ef8917e0bc34686e892503aba'
+  version '2.7.4'
+  sha256 '624e5af6ff44c01e838d8a517a71f61c5aff350038817396c9c387bd17fa65f7'
 
   url "https://github.com/concourse/concourse/releases/download/v#{version}/fly_darwin_amd64"
   appcast 'https://github.com/concourse/concourse/releases.atom',
-          checkpoint: '22601548e307a4713aa32765971955756f1052c5615187927a699b918e8da0fd'
+          checkpoint: 'f3e9d5f7ef7ff923f0635fba79facb8ca690c6637fedcbabe8b0cac60c842e7b'
   name 'fly'
   homepage 'https://github.com/concourse/fly'
 
   container type: :naked
 
   binary 'fly_darwin_amd64', target: 'fly'
-
-  postflight do
-    set_permissions "#{staged_path}/fly_darwin_amd64", '0755'
-  end
 end

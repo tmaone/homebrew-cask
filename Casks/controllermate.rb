@@ -1,11 +1,11 @@
 cask 'controllermate' do
-  version '4.10.0'
-  sha256 '59590e5c9129ed62293f68bfc06cd430bbc57f34c430a1417f718e4f1e0aeb62'
+  version '4.10.2'
+  sha256 'fbbfe4bf7140314a732f1d9ed0b42ddf54d0ee30a13c3d8f9560e5933da8addf'
 
   # amazonaws.com/orderedbytes was verified as official when first introduced to the cask
   url "https://s3.amazonaws.com/orderedbytes/ControllerMate#{version.no_dots}.zip"
   appcast 'https://www.orderedbytes.com/sparkle/appcast_cm460.xml',
-          checkpoint: 'f89ef55cc362d4c3a98dd523ea0655870127497460c774c8a0caaa720b2f5934'
+          checkpoint: '745392e35517416f967acbb0fa5831acd50f7a57187b81c4f062c12488a8dabf'
   name 'ControllerMate'
   homepage 'https://www.orderedbytes.com/controllermate/'
 

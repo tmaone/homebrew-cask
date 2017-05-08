@@ -1,12 +1,24 @@
 cask 'little-snitch' do
-  version '3.7.2'
-  sha256 '88200d52bb6f907a902feb3eb10491181485fd914371d80627694683d9762ed3'
+  if MacOS.version <= :mountain_lion
+    version '3.3.4'
+    sha256 '19dfcd33594fc14be321c3f54651059029b73f715158e0498ba01ceb69bf6c4a'
+    url "https://www.obdev.at/downloads/littlesnitch/legacy/LittleSnitch-#{version}.dmg"
+  elsif MacOS.version <= :mavericks
+    version '3.6.4'
+    sha256 '143070b3d8fd7370aa9c7881d3239efe33f05f4d4413a46e22988dd64f5b5223'
+    url "https://www.obdev.at/downloads/littlesnitch/legacy/LittleSnitch-#{version}.dmg"
+  else
+    version '3.7.4'
+    sha256 'b0ce3519d72affbc7910c24c264efa94aa91c9ad9b1a905c52baa9769156ea22'
+    url "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-#{version}.dmg"
+  end
 
-  url "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-#{version}.dmg"
   appcast 'https://www.obdev.at/products/littlesnitch/releasenotes.html',
-          checkpoint: '0d64973fcd2156b81e55c3ac5e292ce3711ba16a34b43226006e4d11ba208641'
+          checkpoint: 'ddcf9a82b606ed6f11abee06780285182bbbc6aa77c43b0f7b279554514ba9bc'
   name 'Little Snitch'
   homepage 'https://www.obdev.at/products/littlesnitch/index.html'
+
+  auto_updates true
 
   installer manual: 'Little Snitch Installer.app'
 

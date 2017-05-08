@@ -1,18 +1,21 @@
 cask 'rubymine' do
-  version '2016.3.1'
-  sha256 'd7c41c8722da496d19b38b6fa99602bcd40e40d9bc66bd4d377c31b710527731'
+  version '2017.1.2,171.4249.48'
+  sha256 '74d4e91495d396d721f4526539b9a4cfc4b6db4dd95f5578e890d4c1287c5fde'
 
-  url "https://download.jetbrains.com/ruby/RubyMine-#{version}.dmg"
+  url "https://download.jetbrains.com/ruby/RubyMine-#{version.before_comma}.dmg"
   appcast 'https://data.services.jetbrains.com/products/releases?code=RM&latest=true&type=release',
-          checkpoint: '08bb17f0886abd78389670010485612122280522a66447705e1d65870035d2aa'
+          checkpoint: '458fe7898d5d95ea205e726c16ca4e0c2c3a6c51d6e6053e61aad07084fc385f'
   name 'RubyMine'
   homepage 'https://www.jetbrains.com/ruby/'
 
+  auto_updates true
   conflicts_with cask: 'rubymine-eap'
 
   app 'RubyMine.app'
 
-  uninstall delete: '/usr/local/bin/mine'
+  uninstall_postflight do
+    ENV['PATH'].split(File::PATH_SEPARATOR).map { |path| File.join(path, 'mine') }.each { |path| File.delete(path) if File.exist?(path) }
+  end
 
   zap delete: [
                 "~/Library/Application Support/RubyMine#{version.major_minor}",

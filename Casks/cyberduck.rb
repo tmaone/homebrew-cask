@@ -1,10 +1,10 @@
 cask 'cyberduck' do
-  version '5.3.3.23221'
-  sha256 'b647bbbe27f1796b99bf0eaf83ed07332f2ab141afe3bb885b25a1ae0017a110'
+  version '5.4.4.23962'
+  sha256 'bac70133ce58f432a5da4264525cdb941707d587a614dc5b9cb2bfc6e127d85f'
 
   url "https://update.cyberduck.io/Cyberduck-#{version}.zip"
   appcast 'https://version.cyberduck.io/changelog.rss',
-          checkpoint: 'de1e882f7b9751eedbbdc3f00e9974bee45d421fafd60b615aa09ff3c2ac370d'
+          checkpoint: 'b50b9fc667e3717cd9ccbebda9e86eda50f7f38d72146f19e8d9bec15bacdb47'
   name 'Cyberduck'
   homepage 'https://cyberduck.io/'
 

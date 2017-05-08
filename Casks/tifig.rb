@@ -1,11 +1,11 @@
 cask 'tifig' do
-  version '0.4.0-201609230646'
-  sha256 '9835efb6d4e7931a83fe0eb860ab45cbdb8d3178815d7076212a6bc70af4ba0e'
+  version '0.6.0-201705041302'
+  sha256 'd3f865ca20ac3919be67da639af6fedef7ed87084713f88ff1e6e3e606ee4be4'
 
   # tifig-downloads.s3.amazonaws.com was verified as official when first introduced to the cask
   url "https://tifig-downloads.s3.amazonaws.com/tifig-#{version}-macosx.cocoa.x86_64.tar.gz"
   appcast 'https://www.tifig.net/download/',
-          checkpoint: '5aade911f27a689391d5114b59a5c1a0d0cb42566fe916629728f405852d6b4f'
+          checkpoint: 'd1bc27d2d83cdecd4042d01da0ad91ae621dd120f4ba43eff15e1384f3207df0'
   name 'Tifig'
   homepage 'https://www.tifig.net/'
 

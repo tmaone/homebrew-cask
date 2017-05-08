@@ -1,12 +1,12 @@
 cask 'beyond-compare' do
-  version '4.1.9.21719'
-  sha256 '1576d3c7d07e2dac7a569e7e65631f0f706ec41f5e200ea2beaf977f45d3eccd'
+  version '4.2.0.22302'
+  sha256 '6f927f5c1044f217ce0a37ea7869770f98ecaeff73222c0af5151055f5bc3729'
 
   url "http://www.scootersoftware.com/BCompareOSX-#{version}.zip"
   appcast "http://www.scootersoftware.com/checkupdates.php?product=bc#{version.major}&platform=osx",
-          checkpoint: '491f6cbf38ca59aed9ceae04d0ffcbf93a460a8c342ee682ca92c277e6a144a9'
+          checkpoint: '18ae0b43e5d8123d75501e785b7677f5bddd37f81681150afb33baa518560101'
   name 'Beyond Compare'
-  homepage 'http://www.scootersoftware.com/'
+  homepage 'https://www.scootersoftware.com/'
 
   app 'Beyond Compare.app'
 
